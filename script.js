@@ -11,81 +11,100 @@ const firebaseConfig = {
 firebase.initializeApp(firebaseConfig);
 
 let orderData = [{
-        orderNumber: "00430",
+        orderNumber: "430",
         status: "started",
         item: "Disco Chill Pill",
+        checks: 0,
     },
     {
-        orderNumber: "00429",
+        orderNumber: "429",
         status: "not started",
         item: "Custom Mirror for Lulus store",
+        checks: 0,
     },
     {
-        orderNumber: "00427",
+        orderNumber: "427",
         status: "not started",
         item: "Mini Disco Earth",
+        checks: 0,
     },
     {
-        orderNumber: "00426",
+        orderNumber: "426",
         status: "started",
         item: "Custom 9 inch Disco Letters/Disco Queen",
+        checks: 0,
     },
     {
-        orderNumber: "00424",
+        orderNumber: "424",
         status: "not started",
         item: "Small Disco Mirror with Large Mirror Tiles",
+        checks: 0,
     },
     {
-        orderNumber: "00423",
+        orderNumber: "423",
         status: "not started",
         item: "Medium disco mirror",
+        checks: 0,
     },
     {
-        orderNumber: "00422",
+        orderNumber: "422",
         status: "not started",
         item: "24 inch Disco Saturn ball",
+        checks: 0,
     },
     {
-        orderNumber: "00420",
+        orderNumber: "420",
         status: "not started",
         item: "Medium Rectangular Disco Mirror",
+        checks: 0,
     },
     {
-        orderNumber: "00419",
+        orderNumber: "419",
         status: "not started",
         item: "10x8 inch custom heart mirror",
+        checks: 0,
     },
     {
-        orderNumber: "00415",
+        orderNumber: "415",
         status: "started",
         item: "Blue and Silver Striped Disco Mirror",
+        checks: 0,
     },
     {
-        orderNumber: "00414",
+        orderNumber: "414",
         status: "not started",
         item: "Custom Flower Disco Ball",
+        checks: 0,
     },
     {
-        orderNumber: "00413",
+        orderNumber: "413",
         status: "started",
         item: "Disco lightning bolt",
+        checks: 0,
     },
     {
-        orderNumber: "00412",
+        orderNumber: "412",
         status: "started",
         item: "Disco Shark second listing",
+        checks: 0,
     },
     {
-        orderNumber: "00411",
+        orderNumber: "411",
         status: "started",
         item: "Custom 5 foot Disco Shark",
+        checks: 0,
     },
     {
-        orderNumber: "00210",
+        orderNumber: "210",
         status: "started",
         item: "14 inch Saturn",
+        checks: 0,
     },
 ];
+
+var input = $(".orderNoInput").val();
+var statusResult = $(".statusOutput");
+var purchasedItem = $(".itemOutput");
 
 // Initialize Firebase
 // const app = initializeApp(firebaseConfig);
@@ -103,9 +122,18 @@ database.set({
     .catch(function(error) {
         console.error("Error adding data: ", error);
     });
-
 var usersRef = firebase.database().ref("info");
 usersRef.set({
     orderData
     // Add more key-value pairs as needed
+});
+
+$(".status-btn").on("click", function() {
+    orderData.forEach(function() {
+        if ($(".orderNoInput").val() == orderData.orderNumber) {
+            console.log("Match found! Status: " + orderData.status);
+        } else {
+        	console.log("No match found for " + $(".orderNoInput").val());
+        }
+    });
 });

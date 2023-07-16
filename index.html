@@ -8,141 +8,45 @@
     <script src="https://www.gstatic.com/firebasejs/8.10.0/firebase-database.js"></script>
     <script src="http://code.jquery.com/jquery-1.11.0.min.js"></script>
     <script src="https://code.jquery.com/jquery-1.11.0.min.js"></script>
-    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-9ndCyUaIbzAi2FUVXJi0CjmCapSmO7SnpJef0486qhLnuZ2cdeRhO02iuK6FUUVM" crossorigin="anonymous">
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js" integrity="sha384-geWF76RCwLtnZ8qwWowPQNguL3RmwHVBC9FhGdlKrxdiJJigb/j/68SIy3Te4Bkz" crossorigin="anonymous"></script>
     <link rel="stylesheet" href="style.css">
     <title>Mirrors By Lina Status Checker</title>
 </head>
 
 <body>
     <div class="orders">
-        <div class="input-group mb-3">
-            <span class="orderNoInput input-group-text" id="inputGroup-sizing-default"></span>
-            <input type="text" class="form-control" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-default">
+        <div class="container text-center" id="columns">
+            <div class="row">
+                <div class="col">
+                    <div class="input-group mb-3">
+                        <span class="input-group-text" id="inputGroup-sizing-default"></span>
+                        <input type="text" class="orderNoInput form-control" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-default">
+                    </div>
+                </div>
+                <div class="col">
+                    <p class="statusOutput"></p>
+                </div>
+                <div class="col">
+                    <p class="itemOutput"></p>
+                </div>
+            </div>
         </div>
-        <p class="statusOutput"></p>
-        <p class="itemOutput"></p>
+        <div class="container text-center" id="columns">
+            <div class="row">
+                <div class="col">
+                    <button type="button" class="status-btn btn btn-primary">Get Status</button>
+                </div>
+                <div class="col"></div>
+                <div class="col"></div>
+            </div>
+        </div>
     </div>
 </body>
 <script type="text/javascript" src="script.js"></script>
 <script type="module">
     // Your web app's Firebase configuration
         // For Firebase JS SDK v7.20.0 and later, measurementId is optional
-        // const firebaseConfig = {
-        //   apiKey: "AIzaSyCq_QvmdfC68G_vKYE-UdLJCn7JoqsJ7kc",
-        //   authDomain: "statuschecker-83fef.firebaseapp.com",
-        //   projectId: "statuschecker-83fef",
-        //   storageBucket: "statuschecker-83fef.appspot.com",
-        //   messagingSenderId: "326054019156",
-        //   appId: "1:326054019156:web:ad02edd21d4b9e338eadc1",
-        //   measurementId: "G-GE2J0QW2C5"
-        // };
-
-        // firebase.initializeApp(firebaseConfig);
-
-        //     let orderData = [
-        //     {
-        //         orderNumber:"430",
-        //         status:"not started",
-        //         item:"Disco Chill Pill",
-        //     },
-        //     {
-        //         orderNumber:"429",
-        //         status:"not started",
-        //         item:"Custom Mirror for Lulus store",
-        //     },
-        //             {
-        //         orderNumber:"427",
-        //         status:"not started",
-        //         item:"Mini Disco Earth",
-        //     },
-        //             {
-        //         orderNumber:"426",
-        //         status:"not started",
-        //         item:"Custom 9 inch Disco Letters/Disco Queen",
-        //     },
-        //             {
-        //         orderNumber:"424",
-        //         status:"not started",
-        //         item:"Small Disco Mirror with Large Mirror Tiles",
-        //     },
-        //             {
-        //         orderNumber:"423",
-        //         status:"not started",
-        //         item:"Medium disco mirror",
-        //     },
-        //             {
-        //         orderNumber:"422",
-        //         status:"not started",
-        //         item:"24 inch Disco Saturn ball",
-        //     },
-        //             {
-        //         orderNumber:"420",
-        //         status:"not started",
-        //         item:"Medium Rectangular Disco Mirror",
-        //     },
-        //             {
-        //         orderNumber:"419",
-        //         status:"not started",
-        //         item:"10x8 inch custom heart mirror",
-        //     },
-        //             {
-        //         orderNumber:"415",
-        //         status:"not started",
-        //         item:"Blue and Silver Striped Disco Mirror",
-        //     },
-        //             {
-        //         orderNumber:"414",
-        //         status:"not started",
-        //         item:"Custom Flower Disco Ball",
-        //     },
-        //             {
-        //         orderNumber:"413",
-        //         status:"not started",
-        //         item:"Disco lightning bolt",
-        //     },
-        //             {
-        //         orderNumber:"412",
-        //         status:"not started",
-        //         item:"Disco Shark second listing",
-        //     },
-        //             {
-        //         orderNumber:"411",
-        //         status:"not started",
-        //         item:"Custom 5 foot Disco Shark",
-        //     },
-        //             {
-        //         orderNumber:"210",
-        //         status:"not started",
-        //         item:"14 inch Saturn",
-        //     },
-        // ];
-
-        // var num = $(".orderNoInput").val();
-        // var stat = $(".statusOutput").val();
-        // var desc = $(".itemOutput").val();
-
-        // // Initialize Firebase
-        // // const app = initializeApp(firebaseConfig);
-
-        // var database = firebase.database().ref();
-
-        // // Add data to the database
-        // database.set({
-        //         orderData
-        //         // Add more key-value pairs as needed
-        //     })
-        //     .then(function() {
-        //         console.log("Data added successfully.");
-        //     })
-        //     .catch(function(error) {
-        //         console.error("Error adding data: ", error);
-        //     });
-
-        // var usersRef = firebase.database().ref("info");
-        // usersRef.set({
-        //     orderData
-        //     // Add more key-value pairs as needed
-        // });
     </script>
 
 </html>
